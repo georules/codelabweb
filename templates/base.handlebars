@@ -69,6 +69,7 @@ function resize()	{
 }
 $(document).ready(function() {
 	resize();	
+	refresh();
 	$('#htmlcode').keyup(refresh);
 	$('#csscode').keyup(refresh);
 
@@ -100,7 +101,8 @@ $(document).ready(function() {
 <div class="container-fluid fill">
 	<div class="row-fluid">
 		<div class="header span12">
-			<h4>Code Lab Web</h4>
+			<h4 class="pull-left">Code Lab Web: {{id}}</h4>
+			<form class="pull-right" action="/{{id}}" method="post"><input type="submit" value="Save"></form>
 		</div>
 	</div>
 	<div class="main row-fluid fill">
@@ -111,11 +113,11 @@ $(document).ready(function() {
 		<div id="coding" class="span4 fill">
 			<div id="htmlpanel">
 				<h5>HTML</h5>
-				<textarea id="htmlcode" width="100%"></textarea>
+				<textarea id="htmlcode" width="100%">{{htmlcode}}</textarea>
 			</div>
 			<div id="csspanel">
 				<h5>CSS</h5>
-				<textarea id="csscode" width="100%"></textarea>
+				<textarea id="csscode" width="100%">{{csscode}}</textarea>
 			</div>
 		</div>
 	</div>
