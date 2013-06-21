@@ -2,9 +2,10 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="bootstrap.css" rel="stylesheet">
-<link href="bootstrap-responsive.css" rel="stylesheet">
-<script src="jquery-2.0.2.min.js" type="text/javascript"></script>
+<link href="/a/bootstrap.css" rel="stylesheet">
+<link href="/a/bootstrap-responsive.css" rel="stylesheet">
+<script src="/a/jquery-2.0.2.min.js" type="text/javascript"></script>
+<script src="/a/jquery.form.min.js" type="text/javascript"></script>
 <style>
 html,body {
 	height: 100%;
@@ -88,10 +89,27 @@ $(document).ready(function() {
        })
        console.log("leaving mouseDown");
     });
-   $(document).mouseup(function(e){
-			$('.tarp').remove();
-       $(document).unbind('mousemove');
-       });
+	$(document).mouseup(function(e){
+		$('.tarp').remove();
+			$(document).unbind('mousemove');
+	});
+
+	$('#savebutton').click(function(e) {
+		e.preventDefault();
+		htmlcode = $('#htmlcode').val(); 
+		csscode = $('#csscode').val();
+		url = $('#labid').val();
+		$.ajax({
+			type: "POST",
+			url: url, 
+			data: {htmlcode:htmlcode, csscode:csscode}
+		});
+	});
+
+	$('#newlab').click(function(e)	{
+		window.location = "/";
+	});
+
 });
 </script>
 
@@ -102,7 +120,11 @@ $(document).ready(function() {
 	<div class="row-fluid">
 		<div class="header span12">
 			<h4 class="pull-left">Code Lab Web: {{id}}</h4>
-			<form class="pull-right" action="/{{id}}" method="post"><input type="submit" value="Save"></form>
+			<form id="saveform" class="pull-right" action="/lab/{{id}}" method="post">
+				<input id="labid" type="hidden" value="/lab/{{id}}"/>
+				<input id="savebutton" type="submit" value="Save"/>
+			</form>
+			<input type="button" class= "pull-right" id="newlab" value="New"/>
 		</div>
 	</div>
 	<div class="main row-fluid fill">
@@ -122,6 +144,8 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
+
+<div id="#output"></div>
 
 </body>
 </html>

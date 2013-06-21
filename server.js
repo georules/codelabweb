@@ -11,22 +11,24 @@ var request = require('request');
 var express = require('express');
 var app = express()
 	.use(express.bodyParser())
-	.use('/', express.static(__dirname+'/static'));
+	.use('/a', express.static(__dirname+'/static'));
 
 app.get("/", function(req,res)	{
 	htmlcode = "<h1>Hello World</h1>";
 	csscode = "body {background-color:grey;}";
 	labs.insert({htmlcode:htmlcode,csscode:csscode},{}, function(err, data) {
 		id = data[0]._id;
-		res.redirect('/'+id);
+		res.redirect('/lab/'+id);
 	});
 });
 
-app.post("/:id", function(req,res)	{
+app.post("/lab/:id", function(req,res)	{
 	htmlcode = req.body.htmlcode;
 	csscode = req.body.csscode;
 	bid = BSON.ObjectID(req.params.id);
+	//console.log(bid + " . " + htmlcode + " . " + csscode);
 	labs.update({"_id":bid}, {$set:{htmlcode:htmlcode,csscode:csscode}}, {upsert:true});
+	res.redirect('/lab/'+bid);
 });
 
 app.get("/api", function(req,res) {
@@ -36,7 +38,7 @@ app.get("/api", function(req,res) {
 	res.send(app.routes);
 });
 
-app.get("/:id", function (req,res)	{
+app.get("/lab/:id", function (req,res)	{
 	var template = Handlebars.templates.base;
 	var id = req.params.id;
   console.log(id);
