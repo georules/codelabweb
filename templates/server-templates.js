@@ -10,7 +10,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</h4>\n			<form id=\"saveform\" class=\"pull-right\" action=\"/lab/";
+    + "</h4>\n			<div class=\"pull-right\" id=\"saveit\" style=\"display:none;\"><img src=\"/a/ajax-spinner.gif\"></div>\n			<form id=\"saveform\" class=\"pull-right\" action=\"/lab/";
   if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)

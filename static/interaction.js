@@ -41,10 +41,12 @@ $(document).ready(function() {
 		htmlcode = $('#htmlcode').val(); 
 		csscode = $('#csscode').val();
 		url = $('#labid').val();
+		$("#saveit").show();
 		$.ajax({
 			type: "POST",
 			url: url, 
-			data: {htmlcode:htmlcode, csscode:csscode}
+			data: {htmlcode:htmlcode, csscode:csscode},
+			complete: function (data) {window.setTimeout(function() {$("#saveit").hide();}, 1000);console.log(data);}
 		});
 	});
 

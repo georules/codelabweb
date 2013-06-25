@@ -14,6 +14,7 @@
 	<div class="row-fluid">
 		<div class="header span12">
 			<h4 class="pull-left">Code Lab Web: {{id}}</h4>
+			<div class="pull-right" id="saveit" style="display:none;"><img src="/a/ajax-spinner.gif"></div>
 			<form id="saveform" class="pull-right" action="/lab/{{id}}" method="post">
 				<input id="labid" type="hidden" value="/lab/{{id}}"/>
 				<input id="savebutton" type="submit" value="Save"/>

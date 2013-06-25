@@ -36,22 +36,19 @@ app.post("/lab/:id", function(req,res)	{
 	htmlcode = req.body.htmlcode;
 	csscode = req.body.csscode;
 	bid = BSON.ObjectID(req.params.id);
-	//console.log(bid + " . " + htmlcode + " . " + csscode);
 	labs.update({"_id":bid}, {$set:{htmlcode:htmlcode,csscode:csscode}}, {upsert:true});
-	res.redirect('/lab/'+bid);
+	var up = {"save":true};
+	res.send(up);
 });
 
 app.get("/api", function(req,res) {
 	res.header("Access-Control-Allow-Origin","*");
-	info = "post /api/svg requires svgcode parameter"
-	app.routes.post[1].info = info;
 	res.send(app.routes);
 });
 
 app.get("/lab/:id", function (req,res)	{
 	var template = Handlebars.templates.base;
 	var id = req.params.id;
-  console.log(id);
 	labs.findOne({"_id":BSON.ObjectID(id)}, function(err, data) {
 		var html = template({htmlcode:data.htmlcode, csscode:data.csscode, id:id});
 		res.send(html);
