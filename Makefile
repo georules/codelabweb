@@ -12,4 +12,5 @@ handlebars: Makefile
 	$(HANDLEBARS_COMPILER) templates/*.handlebars > templates/server-templates.js
 
 run: all
+	mongod &
 	supervisor server.js
