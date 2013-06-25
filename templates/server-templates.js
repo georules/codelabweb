@@ -29,4 +29,12 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     + "</textarea>\n			</div>\n		</div>\n	</div>\n</div>\n\n<div id=\"#output\"></div>\n\n<script src=\"/a/interaction.js\" type=\"text/javascript\"></script>\n\n</body>\n</html>\n";
   return buffer;
   });
+templates['error'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<!DOCTYPE html>\n<html>\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<link href=\"/a/bootstrap.css\" rel=\"stylesheet\">\n<link href=\"/a/custom.css\" rel=\"stylesheet\">\n<link href=\"/a/bootstrap-responsive.css\" rel=\"stylesheet\">\n<script src=\"/a/jquery-2.0.2.min.js\" type=\"text/javascript\"></script>\n<script src=\"/a/jquery.form.min.js\" type=\"text/javascript\"></script>\n</head>\n<body>\n\n<div class=\"container-fluid fill\">\n	<div class=\"row-fluid\">\n		<div class=\"header span12\">\n			<h4 class=\"pull-left\">Code Lab Web Error :(</h4>\n			<input type=\"button\" class= \"pull-right\" id=\"newlab\" value=\"New\"/>\n		</div>\n	</div>\n	<div class=\"main row-fluid fill\">\n		<div id=\"show\" class=\"span8 fill\">\n			<iframe id=\"showpage\" class=\"fill\"></iframe>\n			<div id=\"dragbar\"></div>\n		</div>\n		<div id=\"coding\" class=\"span4 fill\">\n			<div id=\"htmlpanel\">\n				<h5>HTML</h5>\n				<textarea id=\"htmlcode\" width=\"100%\">503 - Service Unavailible</textarea>\n			</div>\n			<div id=\"csspanel\">\n				<h5>CSS</h5>\n				<textarea id=\"csscode\" width=\"100%\">body{font-family:Monospace;}</textarea>\n			</div>\n		</div>\n	</div>\n</div>\n\n<div id=\"#output\"></div>\n\n<script src=\"/a/interaction.js\" type=\"text/javascript\"></script>\n\n</body>\n</html>\n";
+  });
 })();

@@ -13,13 +13,23 @@ var app = express()
 	.use(express.bodyParser())
 	.use('/a', express.static(__dirname+'/static'));
 
+function error(req,res)	{
+	var template = Handlebars.templates.error;
+	res.send(template({}));
+}
+
 app.get("/", function(req,res)	{
+	try {
 	htmlcode = "<h1>Hello World</h1>";
 	csscode = "body {background-color:grey;}";
 	labs.insert({htmlcode:htmlcode,csscode:csscode},{}, function(err, data) {
 		id = data[0]._id;
 		res.redirect('/lab/'+id);
 	});
+	}
+	catch (e)	{
+		error(req,res);
+	}
 });
 
 app.post("/lab/:id", function(req,res)	{
@@ -47,6 +57,8 @@ app.get("/lab/:id", function (req,res)	{
 		res.send(html);
 	});
 });
+
+app.get("/error", error);
 
 app.listen(settings.port, function() {
 	console.log("app running on port", settings.port);
