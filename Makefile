@@ -8,6 +8,7 @@ all: \
 	handlebars 
 
 handlebars: Makefile
+	rm -f templates/server-templates.js
 	$(HANDLEBARS_COMPILER) templates/*.handlebars > templates/server-templates.js
 
 run: all

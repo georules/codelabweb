@@ -1,6 +1,7 @@
 function refresh()	{
-	var html = $("#htmlcode").val();
-	var css = "<style type=\"text/css\">" + $("#csscode").val() + "</style>";
+	console.log("refresh called");
+	var html = htmlEditor.getValue(); //$("#htmlcode").val();
+	var css = "<style type=\"text/css\">"+ cssEditor.getValue() + "</style>";
 	$("#showpage").contents().find('head').html(css);
 	$("#showpage").contents().find('body').html(html);
 }
@@ -11,11 +12,13 @@ function resize()	{
 	$("#showpage").css('width',w-15);
 }
 $(document).ready(function() {
+	createEditors();
 	resize();	
 	refresh();
 	$('#htmlcode').keyup(refresh);
 	$('#csscode').keyup(refresh);
-
+	htmlEditor.on("change", refresh);
+	cssEditor.on("change", refresh);
 	$(window).resize(resize);
 
 	$('#dragbar').mousedown(function(e){
@@ -38,8 +41,8 @@ $(document).ready(function() {
 
 	$('#savebutton').click(function(e) {
 		e.preventDefault();
-		htmlcode = $('#htmlcode').val(); 
-		csscode = $('#csscode').val();
+		htmlcode = htmlEditor.getValue();//$('#htmlcode').val(); 
+		csscode = cssEditor.getValue();//$('#csscode').val();
 		url = $('#labid').val();
 		$("#saveit").show();
 		$.ajax({
