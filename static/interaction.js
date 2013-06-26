@@ -21,18 +21,32 @@ function fixresize()	{
 	cssEditor.setSize(w,h2);
 }
 
+function resizewindow(e)	{
+	var w = $(window).width();
+	var h = $(window).height();
+	var codew = $("#coding").width();
+	var ww = Math.max(w - codew-10,100);
+	$("#show").width(ww);
+	$("#coding").width(codew);
+	resize();
+	fixresize();
+}
+
+function redo()	{
+	resize();
+	fixresize();
+	refresh();
+}
+
 $(document).ready(function() {
 	
 	createEditors();
-	resize();	
-	fixresize();	
-	refresh();
+	redo();
 	$('#htmlcode').keyup(refresh);
 	$('#csscode').keyup(refresh);
 	htmlEditor.on("change", refresh);
 	cssEditor.on("change", refresh);
-	$(window).resize(resize);
-	$(window).resize(fixresize);
+	$(window).on("resize",resizewindow);
 	$('#dragbar').mousedown(function(e){
         e.preventDefault();
 				$("body").append('<div class="tarp"></div>')
