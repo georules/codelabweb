@@ -1,5 +1,5 @@
 var settings = require('./settings');
-GLOBAL.Handlebars = require('handlebars');
+Handlebars = require('handlebars');
 require('./templates/server-templates');
 
 var mongo = require('mongoskin');

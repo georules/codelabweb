@@ -1,3 +1,8 @@
+.CodeMirror {
+	font-size:80%;
+	height:auto;
+}
+
 html,body {
 	height: 100%;
 	min-height: 100%;
@@ -22,8 +27,7 @@ textarea {
 }
 #htmlpanel,#csspanel {
 	border: 1px solid black;
-	height:49%;
-	margin-bottom:2px;
+	margin-bottom:10px;
 }
 #coding {
 	margin-left:0px;

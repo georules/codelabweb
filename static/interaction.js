@@ -11,16 +11,28 @@ function resize()	{
 	var w = $("#show").width();
 	$("#showpage").css('width',w-15);
 }
+function fixresize()	{
+	w = $('.main').width() - $('#show').width()-10;
+	$('#coding').css("width",w + 'px');
+	h = $('#show').height();
+	h2 = h / 2 - 50;
+	$('#coding').height(h);
+	htmlEditor.setSize(w,h2);
+	cssEditor.setSize(w,h2);
+}
+
 $(document).ready(function() {
+	
 	createEditors();
 	resize();	
+	fixresize();	
 	refresh();
 	$('#htmlcode').keyup(refresh);
 	$('#csscode').keyup(refresh);
 	htmlEditor.on("change", refresh);
 	cssEditor.on("change", refresh);
 	$(window).resize(resize);
-
+	$(window).resize(fixresize);
 	$('#dragbar').mousedown(function(e){
         e.preventDefault();
 				$("body").append('<div class="tarp"></div>')
@@ -30,6 +42,8 @@ $(document).ready(function() {
 					resize();
           $('#coding').css("left",e.pageX+2);
 					$('#coding').children().css("left",e.pageX+2);
+					w = $('.main').width() - $('#show').width()-10;
+					fixresize();
 					}
        })
        console.log("leaving mouseDown");
