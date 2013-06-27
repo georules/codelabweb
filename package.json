@@ -1,0 +1,23 @@
+{
+  "name": "codelabweb",
+  "version": "0.0.1",
+  "description": "a real time htmlcss web editor",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~3.2.6",
+    "mongoskin": "~0.5.0",
+    "request": "~2.21.0",
+    "handlebars": "~1.0.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/georules/codelabweb.git"
+  },
+  "author": "Geo Miller",
+  "license": "GPLv3"
+}
