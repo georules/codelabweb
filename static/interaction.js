@@ -25,7 +25,7 @@ function resizewindow(e)	{
 	var w = $(window).width();
 	var h = $(window).height();
 	var codew = $("#coding").width();
-	var ww = Math.max(w - codew-10,100);
+	var ww = Math.max(w - codew-10,200);
 	$("#show").width(ww);
 	$("#coding").width(codew);
 	resize();
@@ -51,7 +51,7 @@ $(document).ready(function() {
         e.preventDefault();
 				$("body").append('<div class="tarp"></div>')
         $(document).mousemove(function(e){
-				if (e.pageX > 100)	{
+				if (e.pageX > 200)	{
           $('#show').css("width",e.pageX);
 					resize();
           $('#coding').css("left",e.pageX+2);
