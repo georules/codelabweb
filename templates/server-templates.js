@@ -26,7 +26,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (stack1 = helpers.csscode) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.csscode; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</textarea>\n			</div>\n		</div>\n	</div>\n</div>\n\n<div id=\"#output\"></div>\n\n<script src=\"/a/lib/codemirror/codemirror.js\" type=\"text/javascript\"></script>\n<script src=\"/a/lib/codemirror/mode/xml.js\" type=\"text/javascript\"></script>\n<script src=\"/a/lib/codemirror/mode/css.js\" type=\"text/javascript\"></script>\n<script src=\"/a/editors.js\" type=\"text/javascript\"></script>\n<script src=\"/a/interaction.js\" type=\"text/javascript\"></script>\n\n</body>\n</html>\n";
+    + "</textarea>\n			</div>\n		</div>\n	</div>\n</div>\n\n<div id=\"#output\"></div>\n\n<script src=\"/a/lib/codemirror/codemirror.js\" type=\"text/javascript\"></script>\n<script src=\"/a/lib/codemirror/mode/xml.js\" type=\"text/javascript\"></script>\n<script src=\"/a/lib/codemirror/mode/css.js\" type=\"text/javascript\"></script>\n<script src=\"/a/lib/inlet.min.js\" type=\"text/javascript\"></script>\n<script src=\"/a/editors.js\" type=\"text/javascript\"></script>\n<script src=\"/a/interaction.js\" type=\"text/javascript\"></script>\n\n</body>\n</html>\n";
   return buffer;
   });
 templates['error'] = template(function (Handlebars,depth0,helpers,partials,data) {

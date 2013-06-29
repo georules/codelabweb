@@ -1,3 +1,6 @@
+.inlet_slider {
+	z-index:5000;
+}
 .CodeMirror {
 	font-size:80%;
 	height:auto;
