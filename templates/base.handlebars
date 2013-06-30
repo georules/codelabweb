@@ -43,12 +43,65 @@
 
 <div id="#output"></div>
 
+<input type="text" id="namefield">
+
 <script src="/a/lib/codemirror/codemirror.js" type="text/javascript"></script>
 <script src="/a/lib/codemirror/mode/xml.js" type="text/javascript"></script>
 <script src="/a/lib/codemirror/mode/css.js" type="text/javascript"></script>
 <script src="/a/lib/inlet.min.js" type="text/javascript"></script>
 <script src="/a/editors.js" type="text/javascript"></script>
 <script src="/a/interaction.js" type="text/javascript"></script>
+
+<script src="/channel/bcsocket.js"></script>
+<script src="/share/share.uncompressed.js"></script>
+<script src="/share/cm.js"></script>
+<script>
+var doc = null, editor = null;
+
+function setDoc(docName) {
+  document.title = "ShareJS+CodeMirror: " + docName;
+  // don't set the standard one or we'll create two entries in the users history
+  if(docName != "cm")
+    location.hash = docName;
+
+  sharejs.open(docName, 'text', function(error, newDoc) {
+      if (doc !== null) {
+          doc.close();
+          doc.detach_cm();
+      }
+
+      doc = newDoc;
+
+      if (error) {
+          console.error(error);
+          return;
+      }
+      doc.attach_cm(htmlEditor);
+  });
+};
+
+window.onload = function() {
+  editor = htmlEditor;
+  var namefield = document.getElementById('namefield');
+
+  var docName = location.hash.substr(1);
+  if(docName.length < 1)
+    docName = 'cm';
+  setDoc(docName);  // Hooking ShareJS and CodeMirror for the first time.
+  namefield.value = docName;
+
+  function namefieldChanged() {
+      var docName = namefield.value;
+      if (docName) setDoc(docName);
+  }
+
+  if (namefield.addEventListener) {
+      namefield.addEventListener('input', namefieldChanged, false);
+  } else {
+      namefield.attachEvent('oninput', namefieldChanged);
+  }
+};
+</script>
 
 </body>
 </html>

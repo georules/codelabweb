@@ -1,0 +1,23 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'link' ]
+2 info using npm@1.2.18
+3 info using node@v0.11.2-pre
+4 verbose linkPkg /home/geo/projects/codelabweb
+5 verbose read json /home/geo/projects/codelabweb/package.json
+6 error Error: EACCES, symlink '/home/geo/projects/codelabweb'
+6 error  { [Error: EACCES, symlink '/home/geo/projects/codelabweb']
+6 error   stack: 'Error: EACCES, symlink \'/home/geo/projects/codelabweb\'',
+6 error   errno: 3,
+6 error   code: 'EACCES',
+6 error   path: '/home/geo/projects/codelabweb' }
+7 error Please try running this command again as root/Administrator.
+8 error System Linux 3.2.0-29-generic-pae
+9 error command "/usr/local/bin/node" "/usr/local/bin/npm" "link"
+10 error cwd /home/geo/projects/codelabweb
+11 error node -v v0.11.2-pre
+12 error npm -v 1.2.18
+13 error path /home/geo/projects/codelabweb
+14 error code EACCES
+15 error errno 3
+16 error stack Error: EACCES, symlink '/home/geo/projects/codelabweb'
+17 verbose exit [ 3, true ]

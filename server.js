@@ -13,6 +13,16 @@ var app = express()
 	.use(express.bodyParser())
 	.use('/a', express.static(__dirname+'/static'));
 
+var sharejs = require('share');
+
+var shareOptions = {
+	port:8080,
+	browserChannel: {cors:"*"},
+	db:{type: 'mongo',prefix:'ShareJS'}
+};
+
+sharejs.server.attach(app, shareOptions);
+
 function error(req,res)	{
 	var template = Handlebars.templates.error;
 	res.send(template({}));
