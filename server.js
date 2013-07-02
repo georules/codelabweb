@@ -21,8 +21,8 @@ function error(req,res)	{
 app.get("/", function(req,res)	{
 	try {
 	//htmlcode = "<h1>Hello World</h1>";
-	htmlcode = "";
-	csscode = "body {\n\tbackground-color:#C0C0C0;\n}";
+	//csscode = "body {\n\tbackground-color:#C0C0C0;\n}";
+	htmlcode = csscode = "";
 	labs.insert({htmlcode:htmlcode,csscode:csscode},{}, function(err, data) {
 		id = data[0]._id;
 		res.redirect('/lab/'+id);

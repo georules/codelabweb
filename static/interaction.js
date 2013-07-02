@@ -1,5 +1,4 @@
 function refresh()	{
-	console.log("refresh called");
 	var html = htmlEditor.getValue(); //$("#htmlcode").val();
 	var css = "<style type=\"text/css\">"+ cssEditor.getValue() + "</style>";
 	$("#showpage").contents().find('head').html(css);
