@@ -8,6 +8,7 @@
 <link href="/a/custom.css" rel="stylesheet">
 <script src="/a/jquery-2.0.2.min.js" type="text/javascript"></script>
 <script src="/a/jquery.form.min.js" type="text/javascript"></script>
+<script src="https://cdn.firebase.com/v0/firebase.js"></script>
 </head>
 <body>
 
@@ -31,7 +32,7 @@
 		<div id="coding" class="span4 fill">
 			<div id="htmlpanel">
 				<h5>HTML</h5>
-				<textarea id="htmlcode" width="100%">{{htmlcode}}</textarea>
+				<textarea id="htmlcode" width="100%"></textarea>
 			</div>
 			<div id="csspanel">
 				<h5>CSS</h5>
@@ -47,8 +48,24 @@
 <script src="/a/lib/codemirror/mode/xml.js" type="text/javascript"></script>
 <script src="/a/lib/codemirror/mode/css.js" type="text/javascript"></script>
 <script src="/a/lib/inlet.min.js" type="text/javascript"></script>
+<script src="/a/lib/firepad.js" type="text/javascript"></script>
 <script src="/a/editors.js" type="text/javascript"></script>
 <script src="/a/interaction.js" type="text/javascript"></script>
+
+
+<script>
+$(document).ready(function()	{
+var dataRef = new Firebase("https://codelabweb.firebaseio.com/lab/{{id}}");
+var firepad = Firepad.fromCodeMirror(dataRef, htmlEditor, {});
+
+firepad.on('ready',function()	{
+	if(firepad.isHistoryEmpty())	{
+		firepad.setText('{{htmlcode}}');
+	}
+});
+
+});
+</script>
 
 </body>
 </html>

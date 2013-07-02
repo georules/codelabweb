@@ -8,4 +8,5 @@ function createEditors() {
 		$.extend(options,{mode:{name:'css'}}));
 
 	Inlet(cssEditor);
+	
 }
