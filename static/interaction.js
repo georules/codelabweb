@@ -1,9 +1,17 @@
 function refresh()	{
-	var html = htmlEditor.getValue(); //$("#htmlcode").val();
+	var html = filter(htmlEditor.getValue()); //$("#htmlcode").val();
 	var css = "<style type=\"text/css\">"+ cssEditor.getValue() + "</style>";
 	$("#showpage").contents().find('head').html(css);
-	$("#showpage").contents().find('body').html(html);
+	// somehow this makes JS not execute.
+	iframe = document.getElementById('showpage');
+	iframedoc = iframe.contentDocument || iframe.contentWindow.document;
+	iframedoc.body.innerHTML = html;
 }
+
+function filter(d)	{
+	return d;//.replace('<script','<p');
+}
+
 function resize()	{
 	var h = $(window).height() - $('.header').height()-12;
 	$(".fill").height(h);
