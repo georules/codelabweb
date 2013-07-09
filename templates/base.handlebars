@@ -38,7 +38,9 @@
 	</div>
 </div>
 
-<div id="#output"></div>
+<div id="#data" style="display:none;">
+<input id="did" type="hidden" value="{{id}}"/>
+</div>
 
 <script src="/a/lib/codemirror/codemirror.js" type="text/javascript"></script>
 <script src="/a/lib/codemirror/mode/xml.js" type="text/javascript"></script>
@@ -48,28 +50,6 @@
 <script src="/a/editors.js" type="text/javascript"></script>
 <script src="/a/interaction.js" type="text/javascript"></script>
 
-
-<script>
-$(document).ready(function()	{
-var htmlData = new Firebase("https://codelabweb.firebaseio.com/lab/html-{{id}}");
-var cssData = new Firebase("https://codelabweb.firebaseio.com/lab/css-{{id}}");
-var firepad = Firepad.fromCodeMirror(htmlData, htmlEditor, {});
-var firepad2 = Firepad.fromCodeMirror(cssData, cssEditor, {});
-
-firepad.on('ready',function()	{
-	if(firepad.isHistoryEmpty())	{
-		firepad.setText('{{htmlcode}}');
-	}
-});
-
-firepad2.on('ready',function() {
-	if(firepad2.isHistoryEmpty())	{
-		firepad2.setText('{{csscode}}');
-	}
-});
-
-});
-</script>
 
 </body>
 </html>

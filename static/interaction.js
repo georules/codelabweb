@@ -92,4 +92,22 @@ $(document).ready(function() {
 		window.location = "/";
 	});
 
+	var id = $("#did").val();
+	var htmlData = new Firebase("https://codelabweb.firebaseio.com/lab/html-"+id);
+	var cssData = new Firebase("https://codelabweb.firebaseio.com/lab/css-"+id);
+	var firepad = Firepad.fromCodeMirror(htmlData, htmlEditor, {});
+	var firepad2 = Firepad.fromCodeMirror(cssData, cssEditor, {});
+
+	firepad.on('ready',function()	{
+		if(firepad.isHistoryEmpty())	{
+			//firepad.setText('{{htmlcode}}');
+		}
+	});
+
+	firepad2.on('ready',function() {
+		if(firepad2.isHistoryEmpty())	{
+			//firepad2.setText('{{csscode}}');
+		}
+	});
+
 });
